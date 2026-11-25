@@ -26,6 +26,10 @@ params = {"island": island,
               "body_mass_g": body_mass,
               "sex": sex}
 
-response = requests.get(url=url, params=params).json()["prediction"]
+def predict(params):
+    response = requests.get(url=url, params=params)
+    return response.json()["prediction"]
 
-st.markdown(f"# You have a {response} !!!")
+prediction = predict(params)
+
+st.markdown(f"# You have a {prediction} !!!")
